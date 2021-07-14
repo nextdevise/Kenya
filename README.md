@@ -1,4 +1,4 @@
-# AMC_PHP
+# Kenya_PHP
 一款PHP资产管理系统
 # 安装说明
 需要导入sql的数据库文件
