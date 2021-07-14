@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <title>hiprint.io</title>
+    <link href="css/hinnn.css" rel="stylesheet" />
+
+	<link href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/document.css" rel="stylesheet" />
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/hinnn.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/font-awesome-ie7.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/hiprint.css" rel="stylesheet" />
+    <link href="css/print-lock.css" rel="stylesheet" />
+
+    <script src="plugins/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+
+<link href="css/hiprint.css" rel="stylesheet" />
+<link href="css/print-lock.css" rel="stylesheet" />
+<link media="print" href="css/print-lock.css" rel="stylesheet" />
+<layout class="layout hinnn-layout hinnn-layout-has-sider height-100-per" style="background:#fff;min-width:1000px;">
+
+    <content class="hinnn-layout-content" style="border-left:1px solid #e8e8e8; ">
+        <div class="container-fluid height-100-per print-content">
+
+            <div class="row">
+
+                <div class="col-md-2 " style="padding-right:0px;">
+
+                    <div class="small-printElement-types hiprintEpContainer">
+
+                    </div>
+
+                </div>
+                <div class="col-md-10 ">
+                    <div class="hiprint-toolbar" style="margin-top:15px;">
+                        <ul>
+                            <li><a class="hiprint-toolbar-item" onclick="setPaper('A4')">A4</a></li>
+                            <li><a class="hiprint-toolbar-item" onclick="setPaper('A5')">A5</a></li>
+                            <li><a class="hiprint-toolbar-item"><input type="text" id="customWidth" style="width: 50px;height: 19px;border: 0px;" value="80" placeholder="宽/mm" /></a></li>
+                            <li><a class="hiprint-toolbar-item"><input type="text" id="customHeight" style="width: 50px;height: 19px;border: 0px;" value="40" placeholder="高/mm" /></a></li>
+
+                            <li><a class="hiprint-toolbar-item" onclick="setPaper($('#customWidth').val(),$('#customHeight').val())">确定</a></li>
+                            <li><a class="hiprint-toolbar-item" onclick="rotatePaper()">旋转</a></li>
+                            <li><a class="hiprint-toolbar-item" onclick="clearTemplate()">清空</a></li>
+                            <li>
+                                <a class="btn hiprint-toolbar-item " style="color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;" onclick="preview()">预览</a>
+                            </li>
+                            <li>
+                                <a class="btn hiprint-toolbar-item " style="color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;" onclick="directPrint()">打印</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--
+                    <div class="hiprint-printPagination"></div>
+                    -->
+                    <div id="hiprint-printTemplate" class="hiprint-printTemplate" style="margin-top:20px;margin-left:20px;">
+
+                    </div>
+                    <div style="padding-top:15px;">
+                        <button type="button" class="btn btn-primary" onclick="getJsonTid()">生成json到textarea</button>
+                        <button type="button" class="btn btn-danger" onclick="jsonPreview()">json打印预览</button>
+                    </div>
+                    <!--
+                    <div class="hinnn-callout hinnn-callout-danger">
+
+                    </div>
+                    -->
+                    <textarea class="form-control" rows="10" id="textarea"></textarea>
+                    <div style="padding:15px 0;">
+                        <button type="button" class="btn btn-danger" onclick="getHtml()">生成html到textarea</button>
+                    </div>
+                    <textarea class="form-control" rows="10" id="textarea_html">
+
+</textarea>
+                </div>
+            </div>
+        </div>
+    </content>
+    <sider class="hinnn-layout-sider" style="">
+        <div class="container height-100-per" style="padding-top:65px;width:278px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="PrintElementOptionSetting" style="margin-top:10px;"></div>
+                </div>
+            </div>
+        </div>
+    </sider>
+</layout>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="display: inline-block; width: auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">打印预览</h4>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-danger" onclick="printByHtml()">打印</button>
+                <div class="prevViewDiv"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+
+
+
+</div>
+
+    
+    <script src="plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="plugins/jquery.nicescroll.min.js"></script>
+    <script src="hiprint.bundle.js"></script>
+
+    
+    <script src="custom_test/config-etype-provider.js"></script>
+    <script src="custom_test/config-print-json.js"></script>
+    <script src="custom_test/config-print-data.js"></script>
+    <script src="polyfill.min.js"></script>
+    <script src="plugins/jquery.hiwprint.js"></script>
+    <script src="plugins/JsBarcode.all.min.js"></script>
+    <script src="plugins/qrcode.js"></script>
+    <script src="plugins/jquery.minicolors.min.js"></script>
+
+
+<script src="hiprint.config.js"></script>
+    <script>
+        var hiprintTemplate;
+        $(document).ready(function () {
+            $(".print-content").niceScroll();
+            //初始化打印插件
+            hiprint.init({
+                providers: [new configElementTypeProvider()]
+            });
+
+            //hiprint.PrintElementTypeManager.build('.hiprintEpContainer', 'testModule');
+            //设置左侧拖拽事件
+            hiprint.PrintElementTypeManager.build('.hiprintEpContainer', 'testModule');
+
+            hiprintTemplate = new hiprint.PrintTemplate({
+                template: configPrintJson,
+                settingContainer: '#PrintElementOptionSetting',
+                paginationContainer: '.hiprint-printPagination'
+            });
+            //打印设计
+            hiprintTemplate.design('#hiprint-printTemplate');
+        });
+
+        //预览
+        var preview = function () {
+            $('#myModal .modal-body').html(hiprintTemplate.getHtml(printData))
+            $('#myModal').modal('show')
+        }
+
+        //调整纸张
+        var setPaper = function (paperTypeOrWidth, height) {
+            hiprintTemplate.setPaper(paperTypeOrWidth, height);
+        }
+        //旋转
+        var rotatePaper = function () {
+            hiprintTemplate.rotatePaper();
+        }
+        var clearTemplate = function () {
+            hiprintTemplate.clear();
+        }
+
+        var getJsonTid = function () {
+            $('#textarea').html(JSON.stringify(hiprintTemplate.getJsonTid()))
+        }
+        var getHtml = function () {
+            $('#textarea_html').val(hiprintTemplate.getHtml(printData)[0].outerHTML)
+        }
+
+        //预览
+        var jsonPreview = function () {
+            var testTemplate = new hiprint.PrintTemplate({ template: JSON.parse($('#textarea').val()) });
+
+            $('#myModal .modal-body .prevViewDiv').html(testTemplate.getHtml(printData))
+            $('#myModal').modal('show')
+
+        }
+
+
+        //直接调用浏览器的打印
+        directPrint = function () {
+            hiprintTemplate.print(printData);
+        }
+
+        var printByHtml = function () {
+            hiprintTemplate.printByHtml($('#myModal .modal-body .prevViewDiv'));
+        }
+    </script>
+
+
+</body>
+</html>

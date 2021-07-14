@@ -1,0 +1,33 @@
+{
+    "name": "cocolait/backup",
+    "description": "PHP  Pdo MySQL备份扩展",
+    "type": "library",
+    "keywords": ["pdo", "database", "cocolait", "framework"],
+    "homepage": "http://www.mgchen.com/",
+    "require": {
+       "php": ">=5.3.0",
+        "ext-pdo": "*"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "cocolait",
+            "email": "enkipen@qq.com"
+        }
+    ],
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "stable",
+    "autoload" : {
+        "psr-4" : {
+            "cocolait\\sql\\" : "src/"
+        }
+    }
+}

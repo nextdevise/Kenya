@@ -1,0 +1,68 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d6b067cfedde7b86cf9a4babad3cf9bf",
+    "packages": [
+        {
+            "name": "cocolait/backup",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocolait/backup.git",
+                "reference": "57fbdc374a548eafe4e9c4ef50238a58f0e6bd01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocolait/backup/zipball/57fbdc374a548eafe4e9c4ef50238a58f0e6bd01",
+                "reference": "57fbdc374a548eafe4e9c4ef50238a58f0e6bd01",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cocolait\\sql\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "cocolait",
+                    "email": "enkipen@qq.com"
+                }
+            ],
+            "description": "PHP  Pdo MySQL备份扩展",
+            "homepage": "http://www.mgchen.com/",
+            "keywords": [
+                "cocolait",
+                "database",
+                "framework",
+                "pdo"
+            ],
+            "time": "2018-05-12T07:31:37+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
